@@ -1,0 +1,23 @@
+#include <Servo.h>
+Servo myservo;
+void setup()
+{
+  Serial.begin(9600); 
+  myservo.attach(3);
+}
+void loop()
+{
+  int val;
+  val=analogRead(0); 
+  Serial.print("Moisture is ");
+  Serial.println(val,DEC); 
+  if (val>500)
+  {
+    myservo.write(0);
+  }
+  else
+  {
+    myservo.write(80);
+  }
+  delay(100);
+}
